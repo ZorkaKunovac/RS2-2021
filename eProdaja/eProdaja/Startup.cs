@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using eProdaja.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,6 +28,8 @@ namespace eProdaja
         {
             services.AddControllers();
             services.AddSwaggerGen();
+
+            services.AddScoped<IProizvodService, ProizvodService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using eProdaja.Services;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,42 +11,35 @@ namespace eProdaja.Controllers
     [Route("[controller]")]
     public class ProizvodController : ControllerBase
     {
-        private static List<Proizvod> _proizvodi;
+        public IProizvodService _proizvodService { get; set; }
 
-        static ProizvodController()
+        public ProizvodController(IProizvodService proizvodService)
         {
-            _proizvodi = new List<Proizvod>()
-            {
-                new Proizvod()
-                {
-                    Id=1,
-                    Naziv="Laptop"
-                },
-                new Proizvod()
-                {
-                    Id=2,
-                    Naziv="Mis"
-                }
-            };
+            _proizvodService = proizvodService;
         }
-
 
         [HttpGet]
         public IEnumerable<Proizvod> Get()
         {
-            return _proizvodi;
+            return _proizvodService.Get();
         }
 
         [HttpGet ("{id}")]
         public Proizvod GetById(int id) {
-            return _proizvodi.FirstOrDefault(x=> x.Id==id);
+            return _proizvodService.GetById(id);
         }
 
         [HttpPost]
         public Proizvod Insert( Proizvod proizvod) {
-            _proizvodi.Add(proizvod);
-            return proizvod;
+            return _proizvodService.Insert(proizvod);
         }
+
+        [HttpPut("{id}")]
+        public Proizvod Update(int id, Proizvod proizvod)
+        {
+            return _proizvodService.Update(id, proizvod);
+        }
+
     }
 
     public class Proizvod
