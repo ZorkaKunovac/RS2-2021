@@ -31,32 +31,20 @@ namespace eProdaja.Controllers
 
 
         [HttpGet]
-        public IEnumerable<Proizvod>  Get()
+        public IEnumerable<Proizvod> Get()
         {
-            //List<Proizvod> list = new List<Proizvod>()
-            //{
-            //    new Proizvod()
-            //    {
-            //        Id=1,
-            //        Naziv="Laptop"
-            //    },
-            //    new Proizvod()
-            //    {
-            //        Id=2,
-            //        Naziv="Mis"
-            //    }
-            //};
-
             return _proizvodi;
         }
 
         [HttpGet ("{id}")]
         public Proizvod GetById(int id) {
-            return new Proizvod()
-            {
-                Id = id,
-                Naziv = $"Proizvod {id} "
-            };
+            return _proizvodi.FirstOrDefault(x=> x.Id==id);
+        }
+
+        [HttpPost]
+        public Proizvod Insert( Proizvod proizvod) {
+            _proizvodi.Add(proizvod);
+            return proizvod;
         }
     }
 
