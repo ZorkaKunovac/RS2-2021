@@ -20,7 +20,7 @@ namespace eProdaja.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Korisnici> Get()
+        public IEnumerable<Model.Korisnici> Get()
         {
             return _korisniciService.Get();
         }

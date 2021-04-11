@@ -8,6 +8,6 @@ namespace eProdaja.Services
 {
     public interface IKorisniciService
     {
-        List<Korisnici> Get();
+        List<Model.Korisnici> Get();
     }
 }

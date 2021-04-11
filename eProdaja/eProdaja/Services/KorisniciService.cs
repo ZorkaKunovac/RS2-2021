@@ -13,9 +13,10 @@ namespace eProdaja.Services
         {
             Context = context;
         }
-        public List<Korisnici> Get()
+        public List<Model.Korisnici> Get()
         {
-            return Context.Korisnicis.ToList();
+            //return Context.Korisnicis.ToList();
+            return null;
         }
     }
 }
