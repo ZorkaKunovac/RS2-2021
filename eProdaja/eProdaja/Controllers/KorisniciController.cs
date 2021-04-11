@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using eProdaja.Database;
+using eProdaja.Model.Request;
 using eProdaja.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,5 +27,12 @@ namespace eProdaja.Controllers
         {
             return _korisniciService.Get();
         }
+
+        [HttpPost]
+        public Model.Korisnici Insert([FromBody] KorisniciInsertRequest request)
+        {
+            return _korisniciService.Insert(request);
+        }
+
     }
 }

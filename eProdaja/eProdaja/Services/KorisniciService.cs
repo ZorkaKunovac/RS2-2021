@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using eProdaja.Database;
+using eProdaja.Model.Request;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,11 @@ namespace eProdaja.Services
         public List<Model.Korisnici> Get()
         {
             return Context.Korisnicis.ToList().Select(x => _mapper.Map<Model.Korisnici>(x)).ToList();
+        }
+
+        public Model.Korisnici Insert(KorisniciInsertRequest request)
+        {
+            throw new NotImplementedException();
         }
     }
 }

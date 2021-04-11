@@ -1,4 +1,5 @@
 ﻿using eProdaja.Database;
+using eProdaja.Model.Request;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace eProdaja.Services
     public interface IKorisniciService
     {
         List<Model.Korisnici> Get();
+        Model.Korisnici Insert(KorisniciInsertRequest request);
     }
 }
