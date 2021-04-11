@@ -1,4 +1,5 @@
-﻿using eProdaja.Database;
+﻿using AutoMapper;
+using eProdaja.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +10,16 @@ namespace eProdaja.Services
     public class KorisniciService : IKorisniciService
     {
         public eProdajaContext Context { get; set; }
-        public KorisniciService(eProdajaContext context)
+        protected readonly IMapper _mapper;
+
+        public KorisniciService(eProdajaContext context, IMapper mapper)
         {
             Context = context;
+            _mapper = mapper;
         }
         public List<Model.Korisnici> Get()
         {
-            //return Context.Korisnicis.ToList();
-            return null;
+            return Context.Korisnicis.ToList().Select(x => _mapper.Map<Model.Korisnici>(x)).ToList();
         }
     }
 }
