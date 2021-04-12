@@ -8,30 +8,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eProdaja.Controllers
 {
-    public class VrsteProizvodumController : ControllerBase
+    [ApiController]
+    [Route("[controller]")]
+    public class VrsteProizvodumController : BaseReadController<Model.VrsteProizvodum>
     {
-
-        private readonly IVrsteProizvodumService _vrsteProizvodumService;
-        protected readonly IMapper _mapper;
-        public VrsteProizvodumController(IVrsteProizvodumService vrsteProizvodumService, IMapper mapper)
+        public VrsteProizvodumController(IVrsteProizvodumService service)
+            : base(service)
         {
-            _vrsteProizvodumService = vrsteProizvodumService;
-            _mapper = mapper;
         }
-
-
-        [HttpGet]
-        public IEnumerable<Model.VrsteProizvodum> Get()
-        {
-            return _vrsteProizvodumService.Get();
-        }
-
-        [HttpGet("{id}")]
-        public Model.VrsteProizvodum GetById(int id)
-        {
-            return _vrsteProizvodumService.GetById(id);
-        }
-
 
     }
 }
