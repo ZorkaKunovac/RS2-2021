@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using eProdaja.Database;
+using eProdaja.Filters;
 using eProdaja.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,7 +30,10 @@ namespace eProdaja
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(Startup));
-            services.AddControllers();
+            services.AddControllers(x =>
+            {
+                x.Filters.Add<ErrorFilter>();
+            });
             services.AddSwaggerGen();
             services.AddDbContext<eProdajaContext>(options =>
               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
