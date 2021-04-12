@@ -8,7 +8,7 @@ namespace eProdaja.Services
 {
     public interface IJediniceMjereService
     {
-        public List<Model.JediniceMjere> Get();
+        IEnumerable<Model.JediniceMjere> Get();
         public Model.JediniceMjere GetById(int id);
 
     }

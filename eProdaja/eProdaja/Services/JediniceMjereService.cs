@@ -9,13 +9,15 @@ namespace eProdaja.Services
 {
     public class JediniceMjereService : IJediniceMjereService
     {
-        private eProdajaContext Context;
-        protected readonly Mapper _mapper;
-        public JediniceMjereService (eProdajaContext context, Mapper mapper) {
+        public eProdajaContext Context { get; set; }
+        protected readonly IMapper _mapper;
+
+        public JediniceMjereService(eProdajaContext context, IMapper mapper)
+        {
             Context = context;
             _mapper = mapper;
         }
-        public List<Model.JediniceMjere> Get()
+        public IEnumerable<Model.JediniceMjere> Get()
         {
             return Context.JediniceMjeres.ToList().Select(x => _mapper.Map<Model.JediniceMjere>(x)).ToList();
         }
