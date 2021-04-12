@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using eProdaja.Database;
+using eProdaja.Filters;
 using eProdaja.Model.Request;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace eProdaja.Services
 
         public Model.Korisnici Insert(KorisniciInsertRequest request)
         {
-            throw new NotImplementedException();
+            throw new UserException("Lozinka nije ispravna");
         }
     }
 }
