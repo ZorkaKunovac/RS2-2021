@@ -10,7 +10,7 @@ namespace eProdaja.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class VrsteProizvodumController : BaseReadController<Model.VrsteProizvodum>
+    public class VrsteProizvodumController : BaseReadController<Model.VrsteProizvodum, object>
     {
         public VrsteProizvodumController(IVrsteProizvodumService service)
             : base(service)

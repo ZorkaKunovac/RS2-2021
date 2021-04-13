@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eProdaja.Services
 {
-    public interface IVrsteProizvodumService : IReadService<VrsteProizvodum,object>
+    public interface IProizvodiService: IReadService<Proizvodi, ProizvodiSearchObject>
     {
 
     }

@@ -10,26 +10,12 @@ namespace eProdaja.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class JediniceMjereController : ControllerBase
+    public class JediniceMjereController : BaseReadController<Model.JediniceMjere, object>
     {
-        private readonly IJediniceMjereService _jediniceMjereService;
-        protected readonly IMapper _mapper;
-        public JediniceMjereController(IJediniceMjereService jediniceMjereService, IMapper mapper)
+        public JediniceMjereController(IJediniceMjereService service)
+            : base(service)
         {
-            _jediniceMjereService = jediniceMjereService;
-            _mapper = mapper;
         }
 
-        [HttpGet]
-        public IEnumerable<Model.JediniceMjere> Get()
-        {
-            return _jediniceMjereService.Get();
-        }
-
-        [HttpGet("{id}")]
-        public Model.JediniceMjere GetById(int id)
-        {
-            return _jediniceMjereService.GetById(id);
-        }
     }
 }
